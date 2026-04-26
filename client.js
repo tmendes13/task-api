@@ -1,9 +1,8 @@
-const { get } = require("./app")
-
 let token = null 
+const BASE_URL = 'https://task-api-production-8dca.up.railway.app'
 
 async function getReq() {
-    const res = await fetch('http://localhost:3000/tasks', {
+    const res = await fetch(`${BASE_URL}/tasks`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -13,7 +12,7 @@ async function getReq() {
 }
 
 async function postReq() {
-    const res = await fetch('http://localhost:3000/tasks', {
+    const res = await fetch(`${BASE_URL}/tasks`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -26,7 +25,7 @@ async function postReq() {
 }
 
 async function delReq(id) {
-    const res = await fetch(`http://localhost:3000/tasks/${id}`, {
+    const res = await fetch(`${BASE_URL}/tasks/${id}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -37,7 +36,7 @@ async function delReq(id) {
 }
 
 async function putReq(id) {
-    const res = await fetch(`http://localhost:3000/tasks/${id}`, {
+    const res = await fetch(`${BASE_URL}/tasks/${id}`, {
         method: 'PUT',
         headers:{
             'Content-Type': 'application/json',
@@ -50,11 +49,10 @@ async function putReq(id) {
 }
 
 async function registerReq() {
-    const res = await fetch(`http://localhost:3000/auth/register`, {
+    const res = await fetch(`${BASE_URL}/auth/register`, {
         method: 'POST',
         headers:{
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({username: "teste", password: "teste"})
     })
@@ -63,11 +61,10 @@ async function registerReq() {
 }
 
 async function loginReq() {
-    const res = await fetch(`http://localhost:3000/auth/login`, {
+    const res = await fetch(`${BASE_URL}/auth/login`, {
         method: 'POST',
         headers:{
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({username: "teste", password: "teste"})
     })
